@@ -25,8 +25,8 @@ jobs:
 
     - name: Customize Image
       run: |
-        chmod +x build-image.sh
-        sudo ./build-image.sh base.img
+        chmod +x ./custom-pi-boot\ 2/build-image.sh
+        sudo ./custom-pi-boot\ 2/build-image.sh base.img
       working-directory: ${{ github.workspace }}
 
     - name: Upload Customized Image
