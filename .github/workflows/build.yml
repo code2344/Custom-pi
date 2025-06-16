@@ -34,3 +34,13 @@ jobs:
       with:
         name: custom-pi-image
         path: base.img
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: "Custom Pi Image"
+        tag_name: "latest"
+        files: base.img
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
