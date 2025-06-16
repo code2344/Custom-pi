@@ -1,0 +1,36 @@
+name: Build Custom Pi Image
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Custom Raspbian Image
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y kpartx dosfstools qemu-user-static
+
+    - name: Download Base Image
+      run: |
+        curl -L -o base.zip https://downloads.raspberrypi.org/raspios_lite_armhf_latest
+        unzip base.zip
+        mv *.img base.img
+
+    - name: Customize Image
+      run: |
+        chmod +x build-image.sh
+        sudo ./build-image.sh base.img
+
+    - name: Upload Customized Image
+      uses: actions/upload-artifact@v4
+      with:
+        name: custom-pi-image
+        path: base.img
