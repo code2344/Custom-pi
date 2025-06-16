@@ -20,8 +20,8 @@ jobs:
 
     - name: Download Base Image
       run: |
-        curl -L -o base.zip https://downloads.raspberrypi.org/raspios_lite_armhf_latest
-        unzip base.zip
+        curl -L -o base.img.xz https://downloads.raspberrypi.org/raspios_lite_armhf_latest
+        xz -d base.img.xz
         mv *.img base.img
 
     - name: Customize Image
