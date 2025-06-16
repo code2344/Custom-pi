@@ -1,0 +1,5 @@
+#!/bin/bash
+fbi -T 1 -d /dev/fb0 -noverbose -a /boot/splash.png &
+cd /home/pi
+./ebike_demo &
+exit 0

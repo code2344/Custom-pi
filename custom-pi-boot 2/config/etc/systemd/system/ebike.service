@@ -1,0 +1,12 @@
+[Unit]
+Description=LVGL E-Bike Demo
+After=network.target
+
+[Service]
+ExecStart=/home/pi/ebike_demo
+Restart=always
+User=pi
+WorkingDirectory=/home/pi
+
+[Install]
+WantedBy=multi-user.target
